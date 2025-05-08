@@ -1,0 +1,19 @@
+# Ignorar node_modules (dependências do Node.js)
+node_modules/
+
+# Ignorar arquivos de configuração do Cypress local
+cypress.env.json
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
+
+# Ignorar arquivos de sistema (dependendo do seu sistema operacional)
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+*.tmp
+
+# Ignorar arquivos de configuração do sistema de controle de versão
+.git/

@@ -23,3 +23,10 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('preencherLogin', (email, senha) => {
+    cy.get('#user-name').type(email)
+    cy.get('#password').type(senha)
+    cy.get('#login-button').click()
+    })
+
