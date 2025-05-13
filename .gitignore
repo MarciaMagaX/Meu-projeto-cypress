@@ -17,3 +17,14 @@ Thumbs.db
 
 # Ignorar arquivos de configuração do sistema de controle de versão
 .git/
+.env
+
+# Relatórios do Mochawesome
+cypress/reports/mochawesome/
+mochawesome.json
+
+# Prints automáticos de falhas (se estiver usando screenshots)
+cypress/screenshots/
+
+# Vídeos (caso esteja gravando execuções)
+cypress/videos/

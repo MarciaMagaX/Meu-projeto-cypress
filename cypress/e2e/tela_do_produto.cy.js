@@ -1,10 +1,7 @@
 describe('Funcionalidade: Tela de Detalhes do Produto', () => {
 
   beforeEach(() => {
-    cy.visit('https://www.saucedemo.com/')
-    cy.get('[data-test="username"]').should('be.visible').type('standard_user')
-    cy.get('[data-test="password"]').should('be.visible').type('secret_sauce')
-    cy.get('[data-test="login-button"]').click()
+    cy.preencherLogin();
     cy.url().should('include', '/inventory.html')
   })
 

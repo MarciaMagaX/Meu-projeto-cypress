@@ -1,9 +1,6 @@
 describe('Funcionalidade de Produtos - SauceDemo', () => {
   beforeEach(() => {
-    cy.visit('https://www.saucedemo.com/')
-    cy.get('#user-name').should('be.visible').type('standard_user')
-    cy.get('#password').should('be.visible').type('secret_sauce')
-    cy.get('#login-button').should('be.visible').click()
+    cy.preencherLogin();
     cy.url().should('eq', 'https://www.saucedemo.com/inventory.html')
   })
 
