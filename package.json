@@ -3,10 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-  "cy:run": "cypress run",
-  "cy:merge": "mochawesome-merge cypress/reports/mochawesome/*.json > mochawesome.json",
-  "cy:report": "marge mochawesome.json --reportDir cypress/reports/mochawesome --reportFilename final-report --inline",
-  "cy:full": "npm run cy:run && npm run cy:merge && npm run cy:report"
+  "cy:run": "cypress run"
   },
   "keywords": [],
   "author": "",
