@@ -1,3 +1,4 @@
+import ProdutosPage from "../support/pages/produtosPage";
 describe('Funcionalidade de Produtos - SauceDemo', () => {
   beforeEach(() => {
     cy.preencherLogin();
@@ -5,23 +6,7 @@ describe('Funcionalidade de Produtos - SauceDemo', () => {
   })
 
   it('Deve verificar o nome e o preço de cada produto exibido', () => {
-    cy.get('.inventory_item').should('have.length', 6)
-
-    cy.get('.inventory_item').each(($produto, index) => {
-      cy.wrap($produto).within(() => {
-        cy.get('.inventory_item_name')
-          .should('be.visible')
-          .then(($nome) => {
-            cy.log(`Produto ${index + 1} - Nome: ${$nome.text()}`)
-          })
-
-        cy.get('.inventory_item_price')
-          .should('be.visible')
-          .then(($preco) => {
-            cy.log(`Produto ${index + 1} - Preço: ${$preco.text()}`)
-          })
-      })
-    })
+    ProdutosPage.verificarProduto()
   })
 
   it('Deve adicionar e remover apenas o primeiro produto do carrinho', () => {

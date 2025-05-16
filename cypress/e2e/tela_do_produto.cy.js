@@ -1,3 +1,4 @@
+import ProdutosPage from "../support/pages/produtosPage";
 describe('Funcionalidade: Tela de Detalhes do Produto', () => {
 
   beforeEach(() => {
@@ -6,8 +7,7 @@ describe('Funcionalidade: Tela de Detalhes do Produto', () => {
   })
 
   it('Deve exibir nome, descrição, valor e botão "Add to cart" na página de detalhes do produto', () => {
-    cy.get('.inventory_item_name').first().click()
-
+    ProdutosPage.btnAcessarProduto()    
     cy.get('.inventory_details_img').should('be.visible')
     cy.get('.inventory_details_name').should('be.visible')
     cy.get('.inventory_details_desc').should('be.visible')
