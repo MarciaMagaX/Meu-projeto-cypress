@@ -25,7 +25,7 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 Cypress.Commands.add('preencherLogin', (email = Cypress.env('email'), senha = Cypress.env('password')) => {
-    cy.visit('https://www.saucedemo.com/')
+    cy.visit('/')
     cy.get('#user-name').type(email)
     cy.get('#password').type(senha)
     cy.get('#login-button').click()

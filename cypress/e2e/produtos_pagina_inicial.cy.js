@@ -11,30 +11,34 @@ describe('Funcionalidade de Produtos - SauceDemo', () => {
 
   it('Deve adicionar e remover apenas o primeiro produto do carrinho', () => {
     // Adiciona o primeiro produto
-    cy.get('.inventory_item').first().within(() => {
-      cy.get('button').contains('Add to cart').should('be.visible').click()
-    })
+    // cy.get('.inventory_item').first().within(() => {
+      // cy.get('button').contains('Add to cart').should('be.visible').click()
+      ProdutosPage.adicionarPrimeiroProduto();
+      ProdutosPage.verificarBotaoRemover();
+      ProdutosPage.removerPrimeiroProduto();
+      ProdutosPage.verificarBotaoAdicionar();
+    // })
 
     // Aguarda 3 segundos
-    cy.wait(3000)
+    // cy.wait(3000)
 
     // Verifica se o botão virou "Remove"
-    cy.get('.inventory_item').first().within(() => {
-      cy.get('button').contains('Remove').should('be.visible')
-    })
+    // cy.get('.inventory_item').first().within(() => {
+      // cy.get('button').contains('Remove').should('be.visible')
+    // })
 
     // Remove o produto
-    cy.get('.inventory_item').first().within(() => {
-      cy.get('button').contains('Remove').click()
-    })
+    // cy.get('.inventory_item').first().within(() => {
+      // cy.get('button').contains('Remove').click()
+    // })
 
     // Aguarda 3 segundos
-    cy.wait(3000)
+    // cy.wait(3000)
 
     // Verifica se voltou para "Add to cart"
-    cy.get('.inventory_item').first().within(() => {
-      cy.get('button').contains('Add to cart').should('be.visible')
-    })
+    // cy.get('.inventory_item').first().within(() => {
+      // cy.get('button').contains('Add to cart').should('be.visible')
+    // })
   })
 })
 

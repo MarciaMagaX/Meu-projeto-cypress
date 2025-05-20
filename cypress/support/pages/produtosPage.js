@@ -25,6 +25,32 @@ class ProdutosPage {
  
   }
 
+  adicionarPrimeiroProduto() {
+    cy.get('.inventory_item').first().within(() => {
+      cy.get('button').contains('Add to cart').should('be.visible').click()
+    })
+    cy.wait(3000)
+  }
+
+  verificarBotaoRemover() {
+    cy.get('.inventory_item').first().within(() => {
+      cy.get('button').contains('Remove').should('be.visible')
+    })
+  }
+
+  removerPrimeiroProduto() {
+    cy.get('.inventory_item').first().within(() => {
+      cy.get('button').contains('Remove').click()
+    })
+    cy.wait(3000)
+  }
+
+  verificarBotaoAdicionar() {
+    cy.get('.inventory_item').first().within(() => {
+      cy.get('button').contains('Add to cart').should('be.visible')
+    })
+  }
+
 }
 
 export default new ProdutosPage();
