@@ -1,4 +1,4 @@
-class tela_do_carrinhoPage {
+class cartPage {
   abrirProduto(productName) {
     cy.contains(productName).should('be.visible').click();
   }
@@ -16,4 +16,4 @@ class tela_do_carrinhoPage {
   }
 }
 
-export default new tela_do_carrinhoPage();
+export default new cartPage();

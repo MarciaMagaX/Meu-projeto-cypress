@@ -1,4 +1,4 @@
-class TelaDoProdutoPage {
+class inventoryPage {
   acessarPrimeiroProduto() {
     cy.get('.inventory_item_name').first().click();
   }
@@ -40,4 +40,4 @@ class TelaDoProdutoPage {
   }
 }
 
-export default new TelaDoProdutoPage();
+export default new inventoryPage();
