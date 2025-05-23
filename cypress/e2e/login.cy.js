@@ -1,4 +1,4 @@
-import LoginPage from "../support/pages/loginPage";
+import LoginPage from "../support/pages/LoginPage";
 
 describe('Funcionalidade de Login - SauceDemo', () => {
 
