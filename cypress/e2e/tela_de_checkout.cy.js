@@ -1,4 +1,4 @@
-import CheckoutPage from "../support/pages/tela_de_checkoutPage";
+import CheckoutPage from "../support/pages/checkoutPage";
 
 describe('Checkout Completo - SauceDemo', () => {
   beforeEach(() => {

@@ -1,5 +1,5 @@
 import ProdutosPage from "../support/pages/produtosPage";
-import inventoryPage from "../support/pages/tela_do_produtoPage";
+import inventoryPage from "../support/pages/inventoryPage";
 
 describe('Funcionalidade: Tela de Detalhes do Produto', () => {
 

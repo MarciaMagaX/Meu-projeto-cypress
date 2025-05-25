@@ -1,6 +1,6 @@
 
 
-import OrderCompletionPage from '../support/pages/produtos_checkoutPage';
+import OrderCompletionPage from '../support/pages/orderPage';
 
 describe('Feature: Finalização da compra no SauceDemo', () => {
   const baseUrl = 'https://www.saucedemo.com/';

@@ -1,5 +1,5 @@
 
-import { filter } from '../support/pages/filtro_produtosPage';
+import { filter } from '../support/pages/filterPage';
 
 describe('Funcionalidade de filtro de produtos - SauceDemo', () => {
   beforeEach(() => {
