@@ -21,41 +21,82 @@ Todos os testes estão no arquivo:
 cypress/e2e/login.cy.js
 
 
-#### Cenários cobertos:
+### 🔐 Login
+- ✅ Login com credenciais válidas  
+- ❌ Login com username inválido  
+- ❌ Login com password inválido  
+- ❌ Login com ambos inválidos  
+- ⚠️ Login com campo de username em branco  
+- ⚠️ Login com campo de password em branco  
+- ⚠️ Login com ambos os campos em branco  
 
-- ✅ Login com credenciais válidas
-- ❌ Login com username inválido
-- ❌ Login com password inválido
-- ❌ Login com ambos inválidos
-- ⚠️ Login com campo de username em branco
-- ⚠️ Login com campo de password em branco
-- ⚠️ Login com ambos os campos em branco
+### 🛍️ Produtos
+- ✅ Verificação de nome, descrição e valor dos produtos  
+- ✅ Visibilidade dos botões de adicionar/remover do carrinho  
+- ✅ Validação de redirecionamento da listagem para a tela de detalhes  
+- ✅ Verificação da persistência do estado do botão (adicionado vs removido)  
 
-Cada campo do formulário é validado com `should('be.visible')` antes de qualquer ação, garantindo maior robustez na automação.
+### 🛒 Carrinho de Compras
+- ✅ Adição e remoção de produtos  
+- ✅ Validação do conteúdo do carrinho  
+- ✅ Redirecionamento para checkout  
 
+### 💳 Checkout
+- ✅ Preenchimento dos dados obrigatórios  
+- ⚠️ Validação de mensagens de erro em campos vazios  
+- ✅ Conclusão de compra com sucesso  
+
+### 🔃 Filtros de Produtos
+- ✅ Ordenação por nome (A-Z / Z-A)  
+- ✅ Ordenação por preço (menor/maior)  
+
+---
 ---
 
 ## 🧰 Estrutura do Projeto
 
 
-Meu-projeto-cypress/
+meu-projeto-cypress/
+│
+├── downloads/                        # Pasta para downloads, se usar algo assim nos testes
+│
+├── e2e/                             # Testes end-to-end
+│   ├── filtro_produtos.cy.js
+│   ├── login.cy.js
+│   ├── produtos_checkout.cy.js
+│   ├── produtos_pagina_inicial.cy.js
+│   ├── tela_de_checkout.cy.js
+│   └── tela_do_carrinho.cy.js
+│   └── tela_do_produto.cy.js
+│
+├── fixtures/                        # Dados estáticos, mocks
+│   └── example.json
+│
+├── reports/                        # Relatórios gerados pelos testes
+│
+├── screenshots/                    # Capturas de tela (ex: falhas)
+│
+├── support/                       # Arquivos de suporte e comandos customizados
+│   ├── commands.js
+│   └── e2e.js
+│
+├── pages/                        # Page Objects (separação por tela/página)
+│   ├── cartPage.js
+│   ├── checkoutPage.js
+│   ├── filterPage.js
+│   ├── inventoryPage.js
+│   ├── loginPage.js
+│   ├── orderPage.js
+│   └── produtosPage.js
+│
+├── node_modules/                # Dependências do projeto (gerado pelo npm)
+│
+├── .gitignore                  # Ignorar arquivos no git (node_modules, reports etc)
+├── cypress.config.js           # Configuração do Cypress
+├── package-lock.json           # Trava das versões de pacotes
+├── package.json                # Dependências e scripts npm
+└── README.md                   # Documentação do projeto
 
-├── cypress/
-
-│ ├── e2e/
-
-│ │ └── login.cy.js # Arquivo com os testes de login
-
-│ ├── support/
-
-│ │ └── e2e.js # Suporte padrão do Cypress
-
-├── cypress.config.js # Configuração principal do Cypress
-
-├── package.json # Dependências e scripts do projeto
-
-
----
 
 ## ▶️ Como rodar o projeto
 
