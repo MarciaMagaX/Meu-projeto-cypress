@@ -57,44 +57,83 @@ cypress/e2e/login.cy.js
 
 
 meu-projeto-cypress/
+
 │
-├── downloads/                        # Pasta para downloads, se usar algo assim nos testes
+
+├── downloads/ # Pasta para downloads, se usar algo assim nos testes
+
 │
+
 ├── e2e/                             # Testes end-to-end
+
 │   ├── filtro_produtos.cy.js
+
 │   ├── login.cy.js
+
 │   ├── produtos_checkout.cy.js
+
 │   ├── produtos_pagina_inicial.cy.js
+
 │   ├── tela_de_checkout.cy.js
+
 │   └── tela_do_carrinho.cy.js
+
 │   └── tela_do_produto.cy.js
+
 │
+
 ├── fixtures/                        # Dados estáticos, mocks
+
 │   └── example.json
+
 │
+
 ├── reports/                        # Relatórios gerados pelos testes
+
 │
+
 ├── screenshots/                    # Capturas de tela (ex: falhas)
+
 │
+
 ├── support/                       # Arquivos de suporte e comandos customizados
+
 │   ├── commands.js
+
 │   └── e2e.js
+
 │
+
 ├── pages/                        # Page Objects (separação por tela/página)
+
 │   ├── cartPage.js
+
 │   ├── checkoutPage.js
+
 │   ├── filterPage.js
+
 │   ├── inventoryPage.js
+
 │   ├── loginPage.js
+
 │   ├── orderPage.js
+
 │   └── produtosPage.js
+
 │
+
 ├── node_modules/                # Dependências do projeto (gerado pelo npm)
+
 │
+
 ├── .gitignore                  # Ignorar arquivos no git (node_modules, reports etc)
+
 ├── cypress.config.js           # Configuração do Cypress
+
 ├── package-lock.json           # Trava das versões de pacotes
+
 ├── package.json                # Dependências e scripts npm
+
 └── README.md                   # Documentação do projeto
 
 
