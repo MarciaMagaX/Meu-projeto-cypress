@@ -2,15 +2,20 @@
   "name": "meu-projeto-cypress",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-  "cy:run": "cypress run"
-  },
-  "keywords": [],
+  "description": "",
   "author": "",
   "license": "ISC",
-  "description": "",
+  "keywords": [],
+  "scripts": {
+    "cy:run": "cypress run",
+    "report:merge": "mochawesome-merge reports/mochawesome-report/*.json > reports/mochawesome-report/merged-report.json",
+    "report:generate": "marge reports/mochawesome-report/merged-report.json --reportDir reports/mochawesome-report --reportFilename mochawesome.html --inline",
+    "report": "npm run report:merge && npm run report:generate",
+    "test:report": "npm run cy:run && npm run report"
+  },
   "devDependencies": {
     "cypress": "^14.3.3",
+    "cypress-mochawesome-reporter": "^3.8.2",
     "dotenv": "^16.5.0",
     "mochawesome": "^7.1.3",
     "mochawesome-merge": "^5.0.0",
