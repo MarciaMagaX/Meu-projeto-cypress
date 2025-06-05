@@ -1,0 +1,369 @@
+Scenario: Validar valor total da compra
+  Given que o usuário está logado na tela de Products
+And o cliente adiciona um produto no carrinho
+When o usuário clica no ícone de compras
+And verifica os produtos escolhidosScenario: Validar quantidade e descrição dos produtos
+  Given que o usuário está na tela de Checkout com dois produtos
+  And o cliente adiciona mais de um produto no carrinho 
+  Then os nomes e descrições dos produtos devem ser exibidos. 
+
+Scenario: Validar informações de pagamento e entrega
+
+And clica no botão “Checkout”
+And preenche suas informações  de entrega
+And clica no botão “Continue”Feature: Tela de Checkout (Informações e Resumo)
+
+Given que o usuário Se encontra na tela Your Cart
+When clica no link de Checkout
+ And o cliente preenche os dados do formulário de Checkout
+  And depois clica  em "Continue"
+  Then o comprador  ve as seções "Payment Information" e "Shipping Information"
+
+And  o usuário confirmou os dados
+When O usuário finaliza a compra
+Then A compra deve ser finalizada com sucesso
+
+
+Then é exibida a tela de “Checkout:Overview”,  o valor de cada produto com com o total dos produtos mais o imposto. 
+
+Scenario: Finalizar compra com sucesso
+Given Que o usuário acessou o site
+And  o usuário fez login com sucesso
+And  o usuário adicionou produtos ao carrinho
+And  o usuário acessou o carrinho
+And  o usuário clicou em Checkout
+And  o usuário preencheu os dados de entrega
+
+ Feature: Tela do Produto (detalhe)
+Scenario: Verificar detalhes do produto
+  Given que o usuário está na página de Products 
+When ele clica na foto ou título do produto escolhido 
+And o cliente é direcionado para a página do produto
+  Then a foto com a descrição, valor e opção de “add to cart” do produto deve ser exibida na tela.
+
+Scenario: Visualizar detalhes do produto
+Scenario: Exibir informações do produto selecionado
+Given que o usuário está na página de Products  
+When ele clica na foto ou título do produto escolhido  
+And o cliente é direcionado para a página do produto  
+Then a foto com a descrição, valor e opção de “add to cart” do produto deve ser exibida na tela
+
+Scenario: Informações principais do produto devem estar visíveis
+Given que o usuário está na página de detalhes do produto
+When a página do produto é carregada
+And a descrição do produto está correta
+And o valor do produto é exibido
+Then o título do produto deve estar visível também.
+
+Scenario: Validar botão 'Add to cart' na tela de detalhes
+Given que o usuário está na página de Products  
+  And o cliente clica no botão "Add to cart" 
+  When O botão “Add to cart” mudar para "Remove"
+  Then O ícone do carrinho deve refletir o item adicionado
+
+Scenario: Verificar redirecionamento do botão 'Back to products'
+Given que o usuário está na página de Products
+And ele clica na foto ou no título do produto escolhido
+And o cliente é direcionado para a página principal do produto
+  When ele clica no botão "Back to products" 
+  Then ele é  redirecionado para a lista de produtos.
+
+Scenario: Validar remoção do produto do carrinho
+ Given que o usuário está na página de Products
+And adiciona um produto qualquer ao carrinho
+  When o cliente clica em "Remove" na tela de detalhes 
+  Then O produto deve ser removido do carrinho.
+
+
+Feature: Produtos - Página Inicial
+
+Scenario: Verificar nome dos produtos exibidos
+Given que o usuário está logado na página de produtos
+When a página é carregada
+Then cada produto deve exibir um nome
+
+Scenario: Verificar preço dos produtos exibidos
+Given que o usuário está logado na página de produtos
+When a página é carregada
+Then cada produto deve exibir um preço
+
+
+
+Scenario: Validar funcionamento do botão 'Add to cart' na lista de produtos
+Given que o usuário está logado e visualizando a lista de produtos
+When ele clica no botão "Add to cart" de um produto
+Then o botão deve mudar para "Remove" e um item deve ser exibido no carrinho
+
+
+Feature: Sistema de Login - SauceDemo
+
+  Como um usuário do sistema SauceDemo
+  Quero poder fazer login com minhas credenciais
+  Para acessar os produtos disponíveis
+
+  Background:
+    Given Que eu acesso a página de login "https://www.saucedemo.com/
+
+Scenario: Login com username e password válidos
+Given que o usuário está na página de login
+When ele preenche o campo "Username" com "standard_user", o campo "Password" com "secret_sauce" e clica no botão de login
+Then ele deve ser redirecionado para a página de inventário "https://www.saucedemo.com/inventory.html"
+
+
+Scenario: Login com username inválido e password válida
+Given que o usuário está na página de login
+When ele preenche o campo "Username" com "usuario_falso", o campo "Password" com "secret_sauce" e clica no botão de login
+Then deve ser exibida a mensagem de erro "Username and password do not match any user in this service"
+
+
+
+Scenario: Login com username e password inválidos
+Given que o usuário está na página de login
+When ele preenche o campo "Username" com "usuario_incorreto", o campo "Password" com "senha_errada" e clica no botão de login
+Then deve ser exibida a mensagem de erro "Username and password do not match any user in this service"
+
+
+Scenario: Login com username válido e password inválida
+Given que o usuário está na página de login
+When ele preenche o campo "Username" com "standard_user", o campo "Password" com "senha_errada" e clica no botão de login
+Then deve ser exibida a mensagem de erro "Username and password do not match any user in this service"
+
+
+Scenario: Login com username em branco e password válida
+Given que o usuário está na página de login
+When ele deixa o campo "Username" em branco, preenche o campo "Password" com "secret_sauce" e clica no botão de login
+Then deve ser exibida a mensagem de erro "Username is required"
+
+
+
+Scenario: Login com password em branco e username válido
+Given que o usuário está na página de login
+When ele preenche o campo "Username" com "standard_user", deixa o campo "Password" em branco e clica no botão de login
+Then deve ser exibida a mensagem de erro "Password is required"
+
+
+Scenario: Login com username e password em branco
+Given que o usuário está na página de login
+When ele deixa os campos "Username" e "Password" em branco e clica no botão de login
+Then deve ser exibida a mensagem de erro "Username is required"
+
+
+
+
+Feature: Filtrar produtos na página de Products - SauceDemo
+
+  Background:
+Scenario: Ordenar produtos por nome de A a Z
+Given que o usuário está logado na página de Products
+When o usuário seleciona o filtro "Name (A to Z)"
+Then os produtos devem ser exibidos em ordem alfabética crescente
+
+Scenario: Ordenar produtos por nome de Z a A
+Given que o usuário está logado na página de Products
+When o usuário seleciona o filtro "Name (Z to A)"
+Then os produtos devem ser exibidos em ordem alfabética decrescente
+
+Scenario: Ordenar produtos por preço do menor para o maior
+Given que o usuário está logado na página de Products
+When o usuário seleciona o filtro "Price (low to high)"
+Then os produtos devem ser exibidos em ordem crescente de preço
+
+Scenario: Ordenar produtos por preço do maior para o menor
+Given que o usuário está logado na página de Products
+When o usuário seleciona o filtro "Price (high to low)"
+Then os produtos devem ser exibidos em ordem decrescente de preço
+
+
+
+
+Feature: Finalização da compra no SauceDemo
+
+  Background:
+Scenario: Finalizar compra com sucesso
+Given que o usuário acessa a página "https://www.saucedemo.com/"
+And o usuário preenche o campo "Username" com "standard_user"
+And preenche o campo "Password" com "secret_sauce"
+And clica no botão de login
+And é redirecionado para a página de produtos
+And clica em "Add to cart" no produto "Sauce Labs Backpack"
+And clica no ícone do carrinho
+And clica no botão "Checkout"
+And preenche o campo "First Name" com "João"
+And preenche o campo "Last Name" com "Silva"
+And preenche o campo "Zip/Postal Code" com "12345"
+When o usuário clica no botão "Finish"
+Then a compra deve ser finalizada com sucesso
+
+
+
+  Scenario: Validar confirmação de compra
+Given que o usuário está logado na página de Products
+And adiciona um produto no carrinho
+And clica no ícone do carrinho 
+And clica em “checkout”
+And preenche as informações de entrega
+And clica em “continue”
+When ele clica em “finish” na página de overview
+Then o usuário deve ver a mensagem "Thank you for your order"
+
+
+  Scenario: Verificar descrição da tela de finalização
+Given que o usuário está logado na página de Products
+And adiciona um produto no carrinho
+And clica no ícone do carrinho 
+And clica em “checkout”
+And preenche as informações de entrega
+And clica em “continue”
+When ele clica em “finish” na página de overview
+Then o usuário deve ver a mensagem "Thank you for your order"
+    "Your order has been dispatched, and will arrive just as fast as the pony can get there!"
+
+  Scenario: Validar redirecionamento com botão 'Back Home'
+Given que o usuário está logado na página de Products
+And adiciona um produto no carrinho
+And clica no ícone do carrinho 
+And clica em “checkout”
+And preenche as informações de entrega
+And clica em “continue”
+And ele clica em “finish” na página de overview
+And o usuário vê a mensagem "Thank you for your order"
+    "Your order has been dispatched, and will arrive just as fast as the pony can get there!"
+When o cliente clica no botão “back home”
+    Then ele é  redirecionado para a página de produtos "/inventory.html"
+
+
+Feature: Tela do Carrinho
+Scenario: Adicionar produtos ao carrinho a partir da lista
+ Given que o usuário está logado na página de Products
+ When o usuário clica em "Add to cart" em um produto na página principal
+ Then o produto deve aparecer no carrinho
+Scenario: Adicionar produtos ao carrinho a partir da tela de produto
+ Given o usuário está na tela de um produto
+ When o usuário clica em "Add to cart"
+ Then o produto deve aparecer no carrinho
+Scenario: Remover produto do carrinho
+ Given um produto foi adicionado ao carrinho
+ When o usuário clica em "Remove" na tela do carrinho
+ Then o carrinho deve estar vazio
+Scenario: Continuar navegando pelo botão 'Continue Shopping'
+ Given que o usuário está logado na página de Products
+ When o usuário clica em "Continue Shopping" no carrinho
+ Then o usuário deve ser redirecionado para a lista de produtos
+Scenario: Ir para a tela de Checkout
+ Given que o usuário está logado na página de Products
+ When o usuário clica em "Checkout"
+ Then o usuário deve ser redirecionado para a tela de dados do usuário
+Scenario: Adicionar mais de um produto ao carrinho
+ Given o usuário está logado na página de Products
+ When o usuário adiciona dois produtos diferentes
+ Then o carrinho deve exibir os itens selecionados
+
+Feature: Funcionalidade de Produtos e Checkout - SauceDemo
+
+  Background:
+   Given que o usuário acessa a página de login "https://www.saucedemo.com/"
+    And o usuário preenche o campo "Username" com "standard_user"
+    And o usuário preenche o campo "Password" com "secret_sauce"
+    And o usuário clica no botão de login
+    Then o usuário deve ser redirecionado para a página de produtos
+
+
+  Scenario: Validar a página de produtos - "Products"
+    Given que o usuário está na página de produtos
+    Then o usuário deve ver o título da página como "Products"
+
+
+  Scenario: Acessar o menu About e validar redirecionamento
+Given que o usuário está logado na página de produtos
+    When o usuário abre o menu lateral
+    And o usuário clica na opção "About"
+    Then o usuário deve ser redirecionado para a página "https://saucelabs.com/"
+
+
+  Scenario: Fazer logout pelo menu
+ Given que o usuário está logado na página de produtos
+    When o usuário abre o menu lateral
+    And o usuário clica na opção "Logout"
+    Then o usuário deve ser redirecionado para a página de login
+
+
+  Scenario: Verificar se o carrinho está vazio
+ Given que o usuário está logado na página de produtos
+    When o usuário clica no ícone do carrinho
+    Then o usuário deve ver o carrinho vazio (sem produtos listados)
+
+
+  Scenario: Carrinho -> Checkout
+  Given que o usuário está logado na página de produtos
+    And o usuário adiciona um produto ao carrinho
+    When o usuário clica no ícone do carrinho
+    And o usuário clica no botão "Checkout"
+    Then o usuário deve ser redirecionado para a tela de informações do cliente
+
+
+  Scenario: Carrinho -> Continue Shopping
+ Given que o usuário está logado na página de produtos
+    And o usuário adiciona um produto ao carrinho
+    When o usuário clica no ícone do carrinho
+    And o usuário clica no botão "Continue Shopping"
+    Then o usuário deve ser redirecionado para a página de produtos
+
+
+  Scenario: Finalizar compra com dados válidos
+     Given que o usuário está logado na página de produtos
+    And o usuário adiciona um produto ao carrinho
+    And o usuário clica no ícone do carrinho
+    And o usuário clica no botão "Checkout"
+    When o usuário preenche os dados: First Name "João", Last Name "Silva", Zip "12345"
+    And o usuário clica no botão "Continue"
+    Then o usuário deve ver as informações de pagamento
+    When o usuário clica no botão "Finish"
+    Then o usuário deve ver a mensagem "Thank you for your order!"
+
+
+  ***Scenario: Checkout com produto grátis (total $0)
+ Given que o usuário não adiciona nenhum produto ao carrinho
+    And o usuário clica no ícone do carrinho
+    And o usuário clica em "Checkout"
+    And o usuário preenche os dados: First Name "Ana", Last Name "Souza", Zip "99999"
+    And o usuário clica no botão "Continue"
+    Then o valor total da compra deve ser "$0.00"
+
+
+  Scenario: Checkout com campos obrigatórios em branco
+ Given que o usuário está logado na página de produtos
+    When o usuário adiciona um produto ao carrinho
+    And o usuário clica em "Checkout"
+    And o usuário deixa o campo "First Name" em branco
+    And o usuário deixa o campo "Last Name" em branco
+    And o usuário deixa o campo "Zip/Postal Code" em branco
+    And o usuário clica em "Continue"
+    Then o usuário deve ver uma mensagem de erro "Error: First Name is required"
+
+
+Scenario: Checkout com dados inválidos nos campos obrigatórios
+Given que o usuário está logado na página de produtos
+    When o usuário adiciona um produto ao carrinho
+    And o usuário clica em "Checkout"
+    And o usuário preenche o campo "First Name" com "@@@"
+    And o usuário preenche o campo "Last Name" com "1234"
+    And o usuário preenche o campo "Zip/Postal Code" com "abcde"
+    And o usuário clica em "Continue"
+    Then (o sistema não valida os dados, então o usuário continua normalmente)
+
+  Scenario: Checkout -> Continuar após preencher os dados
+   Given que o usuário adiciona um produto ao carrinho
+    And o usuário clica em "Checkout"
+    And o usuário preenche os dados corretamente
+    When o usuário clica em "Continue"
+    Then o usuário deve ver a página de resumo do pedido
+
+  Scenario: Cancelar o processo de checkout
+   Given que o usuário está logado na página de produtos
+    And o usuário adiciona um produto ao carrinho
+    And o usuário clica em "Checkout"
+    And o usuário preenche os dados corretamente
+    When o usuário clica em "Cancel"
+    Then o usuário deve ser redirecionado de volta ao carrinho
+
+
